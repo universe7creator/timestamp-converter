@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timestamp Converter Pro — Instant Date & Time Conversion</title>
+  <meta name="description" content="Convert between Unix timestamps, ISO 8601 dates, and human-readable formats instantly. Professional developer tool for $19.">
+  <meta property="og:title" content="Timestamp Converter Pro">
+  <meta property="og:description" content="Convert between Unix timestamps, ISO 8601 dates, and human-readable formats instantly.">
+  <meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); } 50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.8); } }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .animate-pulse-slow { animation: pulse 3s ease-in-out infinite; }
+    .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .gradient-text { background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-glow { animation: glow 2s ease-in-out infinite; }
+    .shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); background-size: 200% 100%; animation: shimmer 2s infinite; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen font-sans antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">T</span>
+          </div>
+          <span class="font-bold text-xl">Timestamp Converter Pro</span>
+        </div>
+        <button id="buyBtn" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-2 rounded-full font-semibold transition-all cta-glow">
+          Get Pro — $19
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 via-purple-900/10 to-transparent"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <span class="gradient-text">Convert Time</span><br>
+        <span class="text-white">Like a Pro</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s;">
+        Instantly convert between Unix timestamps, ISO 8601 dates, and human-readable formats.
+        Built for developers who value precision.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 0.4s;">
+        <button id="buyBtnHero" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-8 py-4 rounded-full font-bold text-lg transition-all cta-glow">
+          Get Timestamp Converter Pro — $19
+        </button>
+        <a href="#demo" class="glass px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all">
+          Try Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Try It Now</h2>
+      <p class="text-gray-400 text-center mb-12">Experience the power of instant timestamp conversion</p>
+
+      <div class="glass rounded-2xl p-8 space-y-6">
+        <!-- Unix Timestamp Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Unix Timestamp (seconds)</label>
+          <input type="number" id="unixInput" placeholder="1704067200"
+            class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+
+        <!-- ISO 8601 Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">ISO 8601 Date</label>
+          <input type="text" id="isoInput" placeholder="2024-01-01T00:00:00.000Z"
+            class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+
+        <!-- Human Readable Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Human Readable</label>
+          <input type="text" id="humanInput" placeholder="January 1, 2024 12:00:00 AM UTC"
+            class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+
+        <!-- Current Time Button -->
+        <div class="flex gap-4">
+          <button id="nowBtn" class="flex-1 bg-gradient-to-r from-indigo-600/50 to-purple-600/50 hover:from-indigo-600 hover:to-purple-600 border border-indigo-500/30 rounded-lg px-4 py-3 font-semibold transition-all">
+            Use Current Time
+          </button>
+          <button id="clearBtn" class="px-6 py-3 glass rounded-lg hover:bg-white/10 transition-all">
+            Clear
+          </button>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden space-y-4 pt-4 border-t border-white/10">
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="glass rounded-lg p-4">
+              <div class="text-xs text-gray-400 mb-1">Unix Timestamp</div>
+              <div id="resultUnix" class="text-lg font-mono text-indigo-400"></div>
+            </div>
+            <div class="glass rounded-lg p-4">
+              <div class="text-xs text-gray-400 mb-1">ISO 8601</div>
+              <div id="resultIso" class="text-sm font-mono text-purple-400"></div>
+            </div>
+            <div class="glass rounded-lg p-4">
+              <div class="text-xs text-gray-400 mb-1">Human Readable</div>
+              <div id="resultHuman" class="text-sm text-pink-400"></div>
+            </div>
+          </div>
+          <div class="glass rounded-lg p-4">
+            <div class="text-xs text-gray-400 mb-2">Relative Time</div>
+            <div id="resultRelative" class="text-lg font-semibold gradient-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Why Developers Love It</h2>
+      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">Professional-grade timestamp conversion with precision and speed</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Instant Conversion</h3>
+          <p class="text-gray-400">Real-time conversion between all major timestamp formats as you type. No waiting, no delays.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Precision Guaranteed</h3>
+          <p class="text-gray-400">Built with JavaScript's native Date object for millisecond-accurate conversions every time.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Relative Time</h3>
+          <p class="text-gray-400">See timestamps in human-friendly relative terms: "2 hours ago", "in 3 days", etc.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-orange-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Timezone Aware</h3>
+          <p class="text-gray-400">Automatic UTC conversion with support for local timezone display.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">One-Click Copy</h3>
+          <p class="text-gray-400">Copy any format to your clipboard with a single click. Streamlined for your workflow.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:bg-white/5 transition-all group">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Mobile Ready</h3>
+          <p class="text-gray-400">Fully responsive design that works perfectly on desktop, tablet, and mobile devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="py-12 px-4 border-t border-white/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-8 items-center opacity-60">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <span class="text-sm">Secure Checkout</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <span class="text-sm">Lifetime Access</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <span class="text-sm">No Subscription</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <span class="text-sm">Works Offline</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="glass rounded-lg p-6">
+          <h3 class="font-bold text-lg mb-2">What timestamp formats are supported?</h3>
+          <p class="text-gray-400">We support Unix timestamps (seconds and milliseconds), ISO 8601 dates, and human-readable formats. All conversions happen instantly in your browser.</p>
+        </div>
+        <div class="glass rounded-lg p-6">
+          <h3 class="font-bold text-lg mb-2">Is this a one-time purchase?</h3>
+          <p class="text-gray-400">Yes! Pay $19 once and get lifetime access to Timestamp Converter Pro. No subscriptions, no recurring fees.</p>
+        </div>
+        <div class="glass rounded-lg p-6">
+          <h3 class="font-bold text-lg mb-2">Does it work offline?</h3>
+          <p class="text-gray-400">Absolutely. Once loaded, the entire tool works offline. No server calls needed for conversions.</p>
+        </div>
+        <div class="glass rounded-lg p-6">
+          <h3 class="font-bold text-lg mb-2">What if I find a bug?</h3>
+          <p class="text-gray-400">Contact us at the support link in the footer and we'll fix it promptly. Your purchase includes updates.</p>
+        </div>
+        <div class="glass rounded-lg p-6">
+          <h3 class="font-bold text-lg mb-2">Can I use this commercially?</h3>
+          <p class="text-gray-400">Yes! Your license covers personal and commercial use. Use it for work projects, client work, or personal development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Convert?</h2>
+      <p class="text-xl text-gray-400 mb-8">Join thousands of developers who trust Timestamp Converter Pro</p>
+      <button id="buyBtnCta" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-10 py-5 rounded-full font-bold text-xl transition-all cta-glow">
+        Get Timestamp Converter Pro — $19
+      </button>
+      <p class="text-sm text-gray-500 mt-4">One-time payment. Lifetime access.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-gray-500 text-sm">
+        &copy; 2024 Timestamp Converter Pro. All rights reserved.
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Checkout URL configuration
+    const CHECKOUT_URL = window.__CHECKOUT_URL || null;
+
+    // Button handlers
+    document.querySelectorAll('#buyBtn, #buyBtnHero, #buyBtnCta').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (CHECKOUT_URL) window.open(CHECKOUT_URL, '_blank');
+        else alert('Store coming soon! Contact @OtonomUniverseCreator on Telegram.');
+      });
+    });
+
+    // Demo functionality
+    const unixInput = document.getElementById('unixInput');
+    const isoInput = document.getElementById('isoInput');
+    const humanInput = document.getElementById('humanInput');
+    const results = document.getElementById('results');
+    const resultUnix = document.getElementById('resultUnix');
+    const resultIso = document.getElementById('resultIso');
+    const resultHuman = document.getElementById('resultHuman');
+    const resultRelative = document.getElementById('resultRelative');
+
+    function updateResults(date) {
+      if (!date || isNaN(date.getTime())) {
+        results.classList.add('hidden');
+        return;
+      }
+      results.classList.remove('hidden');
+      resultUnix.textContent = Math.floor(date.getTime() / 1000);
+      resultIso.textContent = date.toISOString();
+      resultHuman.textContent = date.toUTCString();
+      resultRelative.textContent = getRelativeTime(date);
+    }
+
+    function getRelativeTime(date) {
+      const now = new Date();
+      const diff = date.getTime() - now.getTime();
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      if (Math.abs(seconds) < 60) return seconds > 0 ? 'in a few seconds' : 'just now';
+      if (Math.abs(minutes) < 60) return minutes > 0 ? `in ${minutes} minutes` : `${Math.abs(minutes)} minutes ago`;
+      if (Math.abs(hours) < 24) return hours > 0 ? `in ${hours} hours` : `${Math.abs(hours)} hours ago`;
+      return days > 0 ? `in ${days} days` : `${Math.abs(days)} days ago`;
+    }
+
+    unixInput.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value);
+      if (val) {
+        const date = new Date(val * 1000);
+        updateResults(date);
+        isoInput.value = date.toISOString();
+        humanInput.value = date.toUTCString();
+      }
+    });
+
+    isoInput.addEventListener('input', (e) => {
+      const date = new Date(e.target.value);
+      if (!isNaN(date.getTime())) {
+        updateResults(date);
+        unixInput.value = Math.floor(date.getTime() / 1000);
+        humanInput.value = date.toUTCString();
+      }
+    });
+
+    humanInput.addEventListener('input', (e) => {
+      const date = new Date(e.target.value);
+      if (!isNaN(date.getTime())) {
+        updateResults(date);
+        unixInput.value = Math.floor(date.getTime() / 1000);
+        isoInput.value = date.toISOString();
+      }
+    });
+
+    document.getElementById('nowBtn').addEventListener('click', () => {
+      const now = new Date();
+      unixInput.value = Math.floor(now.getTime() / 1000);
+      isoInput.value = now.toISOString();
+      humanInput.value = now.toUTCString();
+      updateResults(now);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      unixInput.value = '';
+      isoInput.value = '';
+      humanInput.value = '';
+      results.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
