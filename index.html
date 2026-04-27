@@ -8,11 +8,11 @@
     <meta name="keywords" content="timestamp converter, Unix timestamp, ISO 8601, date converter, timezone converter, developer tools">
     <meta name="author" content="UniverseCreator">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://timestamp-converter.vercel.app/">
+    <link rel="canonical" href="https://timestamp-converter-pro.vercel.app/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://timestamp-converter.vercel.app/">
+    <meta property="og:url" content="https://timestamp-converter-pro.vercel.app/">
     <meta property="og:title" content="Timestamp Converter Pro - Convert Unix Timestamps & Dates">
     <meta property="og:description" content="Professional timestamp converter for developers. Convert between Unix timestamps, ISO 8601 dates, and human-readable formats instantly.">
     <meta property="og:image" content="https://og-forge.vercel.app/api/og?title=Timestamp%20Converter%20Pro">
@@ -48,7 +48,7 @@
                 <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Convert between Unix timestamps, ISO 8601 dates, and human-readable formats instantly with timezone support.</p>
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="#demo" class="px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full font-semibold hover:scale-105 transition glow">Try Demo</a>
-                    <a href="#pricing" class="px-8 py-4 glass rounded-full font-semibold hover:bg-white/10 transition">Get Pro $19</a>
+                    <a href="https://buy.polar.sh/polar_cl_jBmAhMljK2igMDJg1dFkrDXMtXXrWCSFBiyYl13d8hH" target="_blank" class="px-8 py-4 glass rounded-full font-semibold hover:bg-white/10 transition">Get Pro $19</a>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
                     <li class="flex items-center gap-3"><span class="text-green-400">✓</span> Batch processing</li>
                     <li class="flex items-center gap-3"><span class="text-green-400">✓</span> API access</li>
                 </ul>
-                <a href="https://profitbridge.lemonsqueezy.com/checkout/buy/f4b93302-0fff-4312-9ce8-c34e64ebebd9" class="inline-block px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full font-semibold hover:scale-105 transition glow">Buy Now</a>
+                <a href="https://buy.polar.sh/polar_cl_jBmAhMljK2igMDJg1dFkrDXMtXXrWCSFBiyYl13d8hH" class="inline-block px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full font-semibold hover:scale-105 transition glow">Buy Now</a>
             </div>
         </div>
     </section>
@@ -171,5 +171,16 @@
             timestampToDate();
         }
     </script>
+
+<script>
+// Checkout URL - auto-wired by fix_dead_checkout_buttons.py
+const CHECKOUT_URL = "https://buy.polar.sh/polar_cl_jBmAhMljK2igMDJg1dFkrDXMtXXrWCSFBiyYl13d8hH";
+document.querySelectorAll('.buy-btn, [class*="buy"], [class*="checkout"]').forEach(btn => {
+    if (!btn.getAttribute('onclick') && !btn.href) {
+        btn.style.cursor = 'pointer';
+        btn.addEventListener('click', () => window.open(CHECKOUT_URL, '_blank'));
+    }
+});
+</script>
 </body>
 </html>

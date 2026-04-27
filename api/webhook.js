@@ -1,5 +1,5 @@
 // Timestamp Converter Pro - LemonSqueezy Webhook Handler
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 function verifySignature(payload, signature, secret) {
   if (!secret) return true;

@@ -28,9 +28,13 @@
   "seo_optimized_at": "2026-04-21T17:48:00Z",
   "payment_provider": "polar",
   "spec_version": "1.0",
-  "polar_product_id": "eac96f8d-d699-417f-a82f-7d94a9285299",
-  "polar_product_price_id": "e9725bd3-9683-4b89-98a7-3833ea10df3c",
+  "polar_product_id": "6fda6887-78b0-41a6-a2f7-4b4a393a43a3",
+  "polar_product_price_id": "7a360ef1-4163-4018-a7a0-3d35bd4fb7e4",
   "polar_checkout_link_id": "66ad049f-ae0f-43fb-b491-d9ffb54cfec6",
   "canonical_url": "https://timestamp-converter.vercel.app",
-  "canonical_url_override": "https://timestamp-converter-pro.vercel.app"
+  "canonical_url_override": "https://timestamp-converter-pro.vercel.app",
+  "category": "developer-tools",
+  "tags": [
+    "converter"
+  ]
 }
